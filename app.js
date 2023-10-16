@@ -10,7 +10,6 @@ const bandwidth = config.get('server.bandwidth')
 const threads = config.get('server.threads')
 const duration = config.get('server.duration')
 const port = process.env.PORT || 9090
-const host = process.env.HOST || 'localhost'
 const keywords = {
     'people': [`/?content=people/m.png`,
     `/?content=people/w.png`],
@@ -66,4 +65,4 @@ wss.on('connection', (ws) => {
     });
     ws.on('error', console.error);
 });
-server.listen(port, host)
+server.listen(port)
