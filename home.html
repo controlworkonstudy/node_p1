@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Практика</title>
+    <title>Practice</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAUlEQVQ4jZ3Svy5EQRTH8c+9uVGKbKEUT7AKvYhSSLaSSEg0Ck+AKPYoJZ4AiYJmEzqVApVKgUKtUKhFRCGiuCN2Ze1ee5qZOTPf3/kzJzOohWHM5QPCM7jDaPZPEDawhUXhrLpAKLCPBcwLF1BUhIfQwmw7XE2gjNxCA8vCeft17yaGHIcJ3hWOfz/p9wvbWMI1Nrs9yISasqsfaArvKXoDp3jFhPDYTaDAkbI5UMOqMJZSz7H+F/xdwhqe0nlFGE/wSEp9r1eNWUp3GpfJd486PjEp3PYSyJPAFU6Sr57Wg37wj0BpO237FzT7wXQO0g0e8KYcmOcqAp0WptLYVrYv0VY1cdZcvF8AAAAASUVORK5CYII=">
     <style>
         body {
             background: #202124;
@@ -48,7 +49,6 @@
         const results = document.getElementById('results')
         const wsp = window.location.host.includes('localhost') ? 'ws' : 'wss'
         let socket = new WebSocket(wsp + '://' + window.location.host)
-        // Клиент посылает ключевое слово на сервер
         document.forms.publish.onsubmit = (ee) => {
             socket.send(ee.target[0].value)
             return false
@@ -74,7 +74,6 @@
         socket.onclose = (exp) => {
             results.innerHTML = '  The connection to WebSocket is closed. Try to reload the page.'
         };
-        // 
         function downloadContent(span, url) {
             if (!localStorage[url]) {
                 downloadContent2Storage(url, span)
@@ -87,7 +86,6 @@
         }
         // показ списка загруженного контента с возможностью выбора контента
         function listDownloadedContent() {
-            // возможностью чтения оффлайн
             const downloaded = document.getElementById('downloaded')
             downloaded.innerHTML = ''
             for (const url in localStorage) {
